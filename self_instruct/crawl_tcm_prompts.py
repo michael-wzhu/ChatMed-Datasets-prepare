@@ -9,16 +9,30 @@ if not openai.api_key:
 
 
 def return_random_prompt():
-    system_prompt = "你需要尽可能给出多样化的，与中医(中国传统医学)相关的，任务指令和对应的回答。我们将用于人工评估ChatGPT模型对指令的完成情况。要求:\n"
+    system_prompt = "你需要尽可能给出多样化的，与中医(中国传统医学),中药等相关的，任务指令和对应的回答。我们将用于人工评估ChatGPT模型对指令的完成情况。要求:\n"
 
     # generate random topics
     entity_list = []
     with open("self_instruct/baseline_all_kg_triples.txt", "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip().split("	")
-            print(line)
+            # print(line)
+            for w in line:
+                w = w.strip()
+                if "symmap_chemical" in w:
+                    continue
+                if "chemical_" in w:
+                    continue
+                if "SMIT" in w:
+                    continue
+
+                # print(w)
+                entity_list.append(w)
+
     # system_prompt += "1. 主题多样化，涵盖各个领域，例如：" + "、".join(random.sample(topic_list, 10)) + "等。\n"
-    system_prompt += "1. 主题多样化，涵盖不同的中医实体，例如：" + "、".join(random.sample(topic_list, 10)) + "等。\n"
+    system_prompt += "1. 主题多样化，涵盖不同的中医实体，例如：" + "、".join(
+        random.sample(entity_list, 10)
+    ) + "等。\n"
 
     # generate random tasks
     task_list = ["开放式生成", "分类", "问答", "编辑", "摘要",
@@ -36,6 +50,7 @@ def return_random_prompt():
 
     system_prompt += "请给出满足条件的20条JSON格式数据：\n"
 
+    print(system_prompt)
     return system_prompt
 
 
@@ -44,9 +59,9 @@ if __name__ == "__main__":
         print("Usage: python crawl_prompt.py <output_file>")
         exit(1)
 
-    output_file = open(sys.argv[1], 'w', encoding="utf-8")
+    output_file = open(sys.argv[1], 'a', encoding="utf-8")
 
-    MAX_EPOCHS = 1  # number of data to generate (each prompt contains 20 JSON-formatted data)
+    MAX_EPOCHS = 10000  # number of data to generate (each prompt contains 20 JSON-formatted data)
     for k in range(MAX_EPOCHS):
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",  # here we use `gpt-3.5-turbo` model, while Stanford-Alpaca uses `text-davinci-003`
@@ -58,4 +73,4 @@ if __name__ == "__main__":
 
     output_file.close()
 
-    # python3 crawl_prompt.py self_instruct/file_1.txt
+    # python3 self_instruct/crawl_tcm_prompts.py self_instruct/file_1.txt
