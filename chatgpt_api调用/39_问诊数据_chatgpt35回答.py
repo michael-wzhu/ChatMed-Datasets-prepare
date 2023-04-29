@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
 
     '''
-    nohup python -u chatgpt_api调用/39_问诊数据_chatgpt35回答.py 91 > 91_log.log &
+    nohup python3 -u chatgpt_api调用/39_问诊数据_chatgpt35回答.py 91 > 91_log.log &
     
     
     
