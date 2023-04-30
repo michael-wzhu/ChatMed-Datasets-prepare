@@ -3,7 +3,7 @@ import json
 import sys
 import random
 
-openai.api_key = "xxx"  # you must provide your OpenAI API key before crawling
+openai.api_key = ""  # you must provide your OpenAI API key before crawling
 if not openai.api_key:
     raise ValueError("OpenAI API key not provided. Please set the 'openai.api_key' variable.")
 
@@ -46,9 +46,9 @@ def return_random_prompt():
     system_prompt += "5. 为指令生成一个适当且涉及真实情况的<input>，不应该只包含简单的占位符。<input>应提供实质性的内容，具有挑战性。字数不超过" + str(
         random.randint(80, 120)) + "字。\n"
     system_prompt += "6. <output>应该是对指令的适当且真实的回应，不能只回复答应或拒绝请求。如果需要额外信息才能回复时，请努力预测用户意图并尝试回复。<output>的内容应少于" + str(
-        random.randint(128, 512)) + "字。\n\n"
+        512) + "字。\n\n"
 
-    system_prompt += "请给出满足条件的20条JSON格式数据：\n"
+    system_prompt += "请给出满足条件的5条JSON格式数据：\n"
 
     print(system_prompt)
     return system_prompt
@@ -59,7 +59,7 @@ if __name__ == "__main__":
         print("Usage: python crawl_prompt.py <output_file>")
         exit(1)
 
-    output_file = open(sys.argv[1], 'a', encoding="utf-8")
+    output_file = open(sys.argv[1], 'w', encoding="utf-8")
 
     MAX_EPOCHS = 10000  # number of data to generate (each prompt contains 20 JSON-formatted data)
     for k in range(MAX_EPOCHS):
