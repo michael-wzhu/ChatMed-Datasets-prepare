@@ -48,7 +48,7 @@ def return_random_prompt():
     system_prompt += "6. <output>应该是对指令的适当且真实的回应，不能只回复答应或拒绝请求。如果需要额外信息才能回复时，请努力预测用户意图并尝试回复。<output>的内容应少于" + str(
         512) + "字。\n\n"
 
-    system_prompt += "请给出满足条件的3条JSON格式数据：\n"
+    system_prompt += "请给出满足条件的1条JSON格式数据：\n"
 
     print(system_prompt)
     return system_prompt
@@ -59,7 +59,7 @@ if __name__ == "__main__":
         print("Usage: python crawl_prompt.py <output_file>")
         exit(1)
 
-    output_file = open(sys.argv[1], 'a', encoding="utf-8")
+    output_file = open(sys.argv[1], 'w', encoding="utf-8")
 
     MAX_EPOCHS = 10000  # number of data to generate (each prompt contains 20 JSON-formatted data)
     for k in range(MAX_EPOCHS):
@@ -69,8 +69,10 @@ if __name__ == "__main__":
                 {"role": "user", "content": return_random_prompt()},
             ]
         )
+        print(response["choices"])
         output_file.write(response["choices"][0]["message"]["content"] + '\n')
 
     output_file.close()
 
-    # python3 self_instruct/crawl_tcm_prompts.py self_instruct/file_1.txt
+    # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_1.txt > file_1_log.log &
+    # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_3.txt > file_3_log.log &
