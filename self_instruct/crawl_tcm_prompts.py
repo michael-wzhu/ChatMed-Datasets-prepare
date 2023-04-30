@@ -74,4 +74,4 @@ if __name__ == "__main__":
 
     output_file.close()
 
-    # python3 self_instruct/crawl_tcm_prompts.py self_instruct/file_1.txt
+    # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_5.txt > file_5_log.log &
