@@ -77,4 +77,5 @@ if __name__ == "__main__":
 
     # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_5.txt > file_5_log.log &
     # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_6.txt > file_6_log.log &
+    # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_7.txt > file_7_log.log &
     #
