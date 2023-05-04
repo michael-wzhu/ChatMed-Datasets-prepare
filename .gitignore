@@ -34,8 +34,8 @@ datasets/*
 
 catboost_info
 
-*.json
-*.jsonl
+# *.json
+# *.jsonl
 
 __pycache__/
 .ipynb_checkpoints/
