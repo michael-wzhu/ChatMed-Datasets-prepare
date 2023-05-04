@@ -13,7 +13,7 @@ import openai
 # openai.api_type = api_type
 # openai.api_base = api_base
 # openai.api_version = api_version
-openai.api_key = "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"
+openai.api_key = "sk-"
 
 decoder = Decoder()
 
@@ -71,6 +71,7 @@ if __name__ == "__main__":
 
     '''
     nohup python3 -u chatgpt_api调用/39_问诊数据_chatgpt35回答.py 91 > 91_log.log &
+    nohup python3 -u chatgpt_api调用/39_问诊数据_chatgpt35回答.py 92 > 92_log.log &
     
     
     
