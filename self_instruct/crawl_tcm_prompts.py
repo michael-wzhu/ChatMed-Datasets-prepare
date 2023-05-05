@@ -37,7 +37,7 @@ def return_random_prompt():
 
     # generate random tasks
     task_list = ["开放式生成", "分类", "问答", "编辑", "摘要",
-                 "写作", "分析", "代码解析", "常识推理", "写文献",
+                 "写作", "分析", "常识推理", "写文献",
                  "抽取", "推荐", "问诊", "文献标题生成", "诊断"]
     system_prompt += "2. 表述多样化，结合真实问题；指令类型多样化，例如：" + "、".join(random.sample(task_list, 10)) + "等。\n"
 

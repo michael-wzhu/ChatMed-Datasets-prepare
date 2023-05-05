@@ -4,9 +4,11 @@ import random
 
 from tqdm import tqdm
 
+
+
 if __name__ =="__main__":
 
-    version = "v0.2"
+    version = "v0.3"
 
     # 合并数据集 并 给出数据集的统计
     list_samples = []
@@ -25,14 +27,14 @@ if __name__ =="__main__":
                 list_samples.extend(samps)
 
     random.shuffle(list_samples)
-    with open(f"data/online_consult/ChatMed-{version}.jsonl", "w", encoding="utf-8") as f:
+    with open(f"data/online_consult/ChatMed-{version}.json", "w", encoding="utf-8") as f:
         for samp in list_samples:
             f.write(
                 json.dumps(samp, ensure_ascii=False) + "\n"
             )
 
     num_lines_per_file = 10000
-    with open(f"data/online_consult/ChatMed-{version}.jsonl", "r", encoding="utf-8") as input_file:
+    with open(f"data/online_consult/ChatMed-{version}.json", "r", encoding="utf-8") as input_file:
         line_num = 1
         file_num = 1
         output_file = open(
