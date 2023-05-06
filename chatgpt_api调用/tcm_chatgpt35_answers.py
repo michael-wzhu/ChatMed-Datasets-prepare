@@ -13,7 +13,7 @@ import openai
 # openai.api_type = api_type
 # openai.api_base = api_base
 # openai.api_version = api_version
-openai.api_key = "sk-"
+openai.api_key = "sk-xxx"
 
 decoder = Decoder()
 
