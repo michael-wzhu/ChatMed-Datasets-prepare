@@ -20,18 +20,18 @@ decoder = Decoder()
 
 if __name__ == "__main__":
 
-    file_index = sys.argv[1]
+    split_idx = sys.argv[1]
 
 
     list_samples = []
-    # f_out = open(f"预训练数据/chatgpt_api调用/splits/corpus_{file_index}_hpc.jsonl", "a", encoding="utf-8", buffering=1)
-    f_out = open(f"self_instruct/tcm_answers_{file_index}.json", "a", encoding="utf-8", buffering=1)
+    f_out = open(f"self_instruct/tcm_answers_1_{split_idx}.json", "a", encoding="utf-8", buffering=1)
 
-    # with open(f"预训练数据/datasets/39_问诊数据/splits/corpus_{file_index}.jsonl", "r", encoding="utf-8") as f:
-    with open(f"self_instruct/tcm_queries_{file_index}.json", "r", encoding="utf-8") as f:
+    with open(f"self_instruct/tcm_queries_1.json", "r", encoding="utf-8") as f:
         for i, line in enumerate(f):
-            # if i > 15000:
-            #     continue
+            if i < int(split_idx) * 6000:
+                continue
+            if i > (int(split_idx) + 1) * 6000:
+                continue
 
             line = json.loads(line.strip())
             q = line["query"]

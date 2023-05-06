@@ -27,18 +27,18 @@ if __name__ =="__main__":
                 list_samples.extend(samps)
 
     random.shuffle(list_samples)
-    with open(f"data/online_consult/ChatMed-{version}.json", "w", encoding="utf-8") as f:
+    with open(f"data/ChatMed_Consult-{version}.json", "w", encoding="utf-8") as f:
         for samp in list_samples:
             f.write(
                 json.dumps(samp, ensure_ascii=False) + "\n"
             )
 
     num_lines_per_file = 10000
-    with open(f"data/online_consult/ChatMed-{version}.json", "r", encoding="utf-8") as input_file:
+    with open(f"data/ChatMed_Consult-{version}.json", "r", encoding="utf-8") as input_file:
         line_num = 1
         file_num = 1
         output_file = open(
-            f"data/online_consult/ChatMed-{version}-{file_num}.jsonl",
+            f"data/ChatMed_Consult-{version}-{file_num}.jsonl",
             "w",
             encoding="utf-8"
         )
@@ -50,7 +50,7 @@ if __name__ =="__main__":
                 output_file.close()
                 file_num += 1
                 line_num = 1
-                output_file = open(f"data/online_consult/ChatMed-{version}-{file_num}.jsonl", 'w',
+                output_file = open(f"data/ChatMed_Consult-{version}-{file_num}.jsonl", 'w',
                                    encoding='utf-8')
 
         output_file.close()
