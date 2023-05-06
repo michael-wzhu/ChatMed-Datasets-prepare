@@ -65,7 +65,9 @@ if __name__ == "__main__":
 
 
     '''
-    nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 1 > tcm_1_log.log &
+    nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 1 > tcm_1_1_log.log &
+    nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 2 > tcm_1_2_log.log &
+    nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 3 > tcm_1_3_log.log &
     
     
     
