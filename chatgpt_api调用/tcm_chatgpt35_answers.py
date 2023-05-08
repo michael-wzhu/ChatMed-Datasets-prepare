@@ -13,7 +13,7 @@ import openai
 # openai.api_type = api_type
 # openai.api_base = api_base
 # openai.api_version = api_version
-openai.api_key = "sk-"
+openai.api_key = "sk-xxx"
 
 decoder = Decoder()
 
@@ -28,6 +28,9 @@ if __name__ == "__main__":
 
     with open(f"self_instruct/tcm_queries_1.json", "r", encoding="utf-8") as f:
         for i, line in enumerate(f):
+            if i < 2950:
+                continue
+
             if i < int(split_idx) * 6000:
                 continue
             if i > (int(split_idx) + 1) * 6000:
@@ -65,10 +68,13 @@ if __name__ == "__main__":
 
 
     '''
+    
     nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 1 > tcm_1_1_log.log &
     nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 2 > tcm_1_2_log.log &
     nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 3 > tcm_1_3_log.log &
+    
     nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 4 > tcm_1_4_log.log &
+    nohup python3 -u chatgpt_api调用/tcm_chatgpt35_answers.py 0 > tcm_1_0_log.log &
     
     
     
