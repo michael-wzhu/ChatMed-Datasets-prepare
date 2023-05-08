@@ -38,7 +38,7 @@ def return_random_prompt():
     # generate random tasks
     task_list = ["开放式生成", "分类", "问答", "编辑", "摘要",
                  "写作", "分析", "常识推理", "写文献",
-                 "抽取", "推荐", "问诊", "文献标题生成", "诊断"]
+                 "抽取", "推荐", "问诊", "文献标题生成", "诊断", "方剂推荐", "治疗推荐"]
     system_prompt += "2. 表述多样化，结合真实问题；指令类型多样化，例如：" + "、".join(random.sample(task_list, 10)) + "等。\n"
 
     # other requirements
@@ -78,4 +78,6 @@ if __name__ == "__main__":
     # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_5.txt > file_5_log.log &
     # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_6.txt > file_6_log.log &
     # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_7.txt > file_7_log.log &
+
+    # nohup python3 -u self_instruct/crawl_tcm_prompts.py self_instruct/file_8.txt > file_8_log.log &
     #
