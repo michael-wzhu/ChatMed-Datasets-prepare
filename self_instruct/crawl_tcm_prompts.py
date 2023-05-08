@@ -3,7 +3,7 @@ import json
 import sys
 import random
 
-openai.api_key = "sk-"  # you must provide your OpenAI API key before crawling
+openai.api_key = "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"  # you must provide your OpenAI API key before crawling
 
 if not openai.api_key:
     raise ValueError("OpenAI API key not provided. Please set the 'openai.api_key' variable.")
